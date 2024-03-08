@@ -1,2 +1,2 @@
 # node-back
-유데미 Node.js 강의
+Node.js Backend 학습 기록
