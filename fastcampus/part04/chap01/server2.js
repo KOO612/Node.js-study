@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
       console.log('data', data);
       const stringfiedData = data.toString();
       console.log('stringfiedData', stringfiedData);
-      Object.assign(dataObject, JSON.parse(stringfiedData));
+      Object.assign(targetObject, JSON.parse(stringfiedData));
     });
   } else {
     if (req.url === '/home') {
