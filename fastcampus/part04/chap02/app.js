@@ -1,4 +1,5 @@
 const express = require('express');
+const { getUser, getUsers, postUser } = require('./controllers/users');
 const PORT = 4000;
 
 const users = [
@@ -24,36 +25,13 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
   const endTime = Date.now() - start;
-  console.log(`${req.method} ${req.url} ${endTime}`);
+  console.log(`${req.method} ${req.url} ${endTime}ms`);
 });
 
-app.get('/', (req, res) => {
-  res.send('hello');
-});
+app.get('/users', getUser);
 
-app.get('/users', (req, res) => {
-  res.json(users);
-});
-
-app.post('/users', (req, res) => {
-  console.log('req.body.name ' + req.body.name);
-  const newUser = {
-    name: req.body.name,
-    id: users.length,
-  };
-  users.push(newUser);
-  res.json(users);
-});
-
-app.get('/users/:userId', (req, res) => {
-  const userId = Number(req.params.userId);
-  const user = users[userId];
-  if (user) {
-    res.status(200).json(user);
-  } else {
-    res.sendStatus(404);
-  }
-});
+app.get('/users/:userId', getUsers);
+app.post('/users', postUser);
 
 app.listen(PORT);
 console.log(`시작  ${PORT}`);
