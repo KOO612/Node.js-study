@@ -1,5 +1,5 @@
 {
-  "name": "ch07",
+  "name": "ch08",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -10,8 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "mysql2": "^3.9.3",
     "nunjucks": "^3.2.4",
     "sequelize": "^6.37.2",
