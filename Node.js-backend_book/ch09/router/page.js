@@ -1,5 +1,7 @@
 const express = require('express');
+
 const { renderJoin, renderMain, renderProfile } = require('../controller/page');
+const { isLoggedIn, isNotLoggedIn } = require('../middlewares');
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -10,8 +12,8 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get('/profile', renderProfile);
-router.get('/join', renderJoin);
+router.get('/profile', isLoggedIn, renderProfile);
+router.get('/join', isNotLoggedIn, renderJoin);
 router.get('/', renderMain);
 
 module.exports = router;
